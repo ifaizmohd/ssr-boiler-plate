@@ -1,5 +1,9 @@
 import * as React from "react";
-import ReactDOM from "react-dom";
+import { hydrateRoot } from "react-dom/client";
+import { matchRoutes } from "../lib/router";
+import { getCurrentPath } from "../lib/router/router";
 import App from "./App";
+import routes from "./components/Routes/Routes";
+import Document from "./Document";
 
-ReactDOM.hydrate(<App />, document.querySelector("#root"));
+const root = hydrateRoot(document, <Document />);

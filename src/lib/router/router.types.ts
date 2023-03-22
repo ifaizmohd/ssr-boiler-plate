@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { FC, ReactElement } from "react";
 
 export interface RouterTypes {
   routes: Array<Object>;
@@ -7,6 +7,6 @@ export interface RouterTypes {
 
 export interface Route {
   path: string;
-  component: ReactElement;
-  exact: boolean;
+  Component: FC;
+  exact?: boolean;
 }

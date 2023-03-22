@@ -1,10 +1,21 @@
+import { Route } from "../../../lib/router/router.types";
 import HomePage from "../../pages/HomePage";
+import Counter from "../Counter/Counter";
+import Post from "../Post/Post";
 
-const routes = [
+const routes: Array<Route> = [
   {
     path: "/",
     exact: true,
-    component: HomePage,
+    Component: HomePage,
+  },
+  {
+    path: "/post",
+    Component: Post,
+  },
+  {
+    path: "/counter",
+    Component: Counter,
   },
 ];
 
