@@ -1,10 +1,8 @@
 import "@babel/polyfill";
 import express, { Express, Request, Response } from "express";
 import routes from "./client/components/Routes/Routes";
+import renderNodeStream from "./lib/core/renderer";
 import { matchRoutes } from "./lib/router";
-import { matchedRoute } from "./lib/router/router";
-import { Route } from "./lib/router/router.types";
-import renderer from "./utils/renderer";
 
 const app: Express = express();
 
@@ -12,13 +10,9 @@ const app: Express = express();
 app.use(express.static("public"));
 //
 app.get("*", (req: Request, res: Response) => {
-  const route = matchRoutes(routes, req.path);
-  console.log("matched route route - ", route, typeof route);
-  const context = {
-    route,
-    props: "Hi this is props from ssr",
-  };
-  renderer(req, context, res);
+  //   const route = matchRoutes(routes, req.path);
+  // TODO: Need to call server side props.
+  renderNodeStream(req, res);
 });
 
 const port = 8080;

@@ -16,7 +16,7 @@ const Document: FC<DocumentProps> = ({ path }) => {
       </head>
       <body>
         <div id="root">
-          <App Component={Component} />
+          <App path={path} />
         </div>
       </body>
     </html>
