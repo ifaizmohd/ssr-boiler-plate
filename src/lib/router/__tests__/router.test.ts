@@ -1,4 +1,4 @@
-import HomePage from "../../../client/pages/HomePage";
+import HomePage from "../../../client/pages/home";
 import { matchedRoute } from "../router";
 
 describe("router test", () => {
