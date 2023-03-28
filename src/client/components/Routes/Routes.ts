@@ -1,5 +1,5 @@
 import { Route } from "../../../lib/router/router.types";
-import Home from "../../pages/home";
+import Home from "../../pages";
 import Counter from "../Counter/Counter";
 import Post from "../Post/Post";
 

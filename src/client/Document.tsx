@@ -5,9 +5,7 @@ import App from "./App";
 import routes from "./components/Routes/Routes";
 import { DocumentProps } from "./types/Document.types";
 
-const Document: FC<DocumentProps> = ({ path }) => {
-  const pathname = getCurrentPath(path);
-  const { Component } = matchRoutes(routes, pathname);
+const Document: FC<DocumentProps> = () => {
   return (
     <html>
       <head>
@@ -16,7 +14,7 @@ const Document: FC<DocumentProps> = ({ path }) => {
       </head>
       <body>
         <div id="root">
-          <App path={path} />
+          <App />
         </div>
       </body>
     </html>

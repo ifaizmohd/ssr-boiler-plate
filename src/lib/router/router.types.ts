@@ -10,3 +10,7 @@ export interface Route {
   Component: FC;
   exact?: boolean;
 }
+
+export interface Page {
+  getServerSideProps?: Function;
+}

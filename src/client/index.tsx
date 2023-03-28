@@ -6,4 +6,4 @@ import App from "./App";
 import routes from "./components/Routes/Routes";
 import Document from "./Document";
 
-const root = hydrateRoot(document, <Document />);
+const root = hydrateRoot(document.getElementById("root"), <App />);
