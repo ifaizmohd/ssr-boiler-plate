@@ -13,4 +13,5 @@ export interface Route {
 
 export interface Page {
   getServerSideProps?: Function;
+  default: FC;
 }

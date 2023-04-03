@@ -2,10 +2,18 @@ import React, { FC } from "react";
 import { matchRoutes } from "../lib/router";
 import { getCurrentPath } from "../lib/router/router";
 import App from "./App";
+import StaticRouter from "./components/Router/StaticRouter";
 import routes from "./components/Routes/Routes";
 import { DocumentProps } from "./types/Document.types";
 
-const Document: FC<DocumentProps> = () => {
+declare global {
+  interface Window {
+    Hydrate?: any;
+  }
+}
+
+const Document: FC<DocumentProps> = ({ path, context }) => {
+  const script = <script>{`var hydrate = ${JSON.stringify(context)}`}</script>;
   return (
     <html>
       <head>
@@ -14,8 +22,11 @@ const Document: FC<DocumentProps> = () => {
       </head>
       <body>
         <div id="root">
-          <App />
+          <StaticRouter path={path} context={context}>
+            <App />
+          </StaticRouter>
         </div>
+        {script}
       </body>
     </html>
   );

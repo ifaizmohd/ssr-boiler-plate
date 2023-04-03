@@ -5,7 +5,7 @@ import { Page } from "./router.types";
 import { routerConstants } from "./routerConstants";
 
 export async function getPageToRender(pathName: string) {
-  let component: Page = {};
+  let component: Page;
   try {
     const page = await getMatchedPage(pathName);
     console.log("pages - ", page);
@@ -18,7 +18,7 @@ export async function getPageToRender(pathName: string) {
   } catch (error) {
     console.error("error!!", error.message);
   }
-  return component;
+  return component.default;
 }
 
 export async function getMatchedPage(pathName: string) {

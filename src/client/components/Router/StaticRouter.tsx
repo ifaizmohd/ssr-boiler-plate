@@ -9,6 +9,7 @@ const StaticRouter: FC<StaticRouterProps> = ({ path, context, children }) => {
   }
   if (context) {
     const { component } = context;
+    console.log("setting component in context - ", component);
     setRoutingComponent(component);
   }
   return <>{children}</>;

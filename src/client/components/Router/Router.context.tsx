@@ -21,7 +21,10 @@ const RouterProvider: FC<RouterProviderTypes> = ({ children }) => {
     if (routingComponent) {
       setComponent(routingComponent);
     }
+    console.log("component set in context - ", Component);
   };
+
+  console.log("component - ", Component);
 
   return (
     <RouterContext.Provider
