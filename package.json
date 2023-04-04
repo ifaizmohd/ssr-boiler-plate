@@ -2,7 +2,6 @@
   "name": "lavish_looks",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:ifaizmohd/lavish_looks.git",
   "author": "Faiz Mohd <42231693+ifaizmohd@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
