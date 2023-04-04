@@ -7,7 +7,7 @@ export default function renderNodeStream(
   hydrator: any
 ) {
   if (!req || !res || !req.path) {
-    res.send("404 Not Found");
+    throw new Error('Invalid Path');
   }
   renderToNodeStram(req, res, hydrator);
 }
