@@ -1,11 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import { Request, Response } from "express";
 import { renderToPipeableStream } from "react-dom/server";
 import Document from "../../../client/Document";
 
-export function renderToNodeStram(req: Request, res: Response, hydrator: any) {
+export function renderToNodeStream(
+  req: Request,
+  res: Response,
+  Component: FC<any>,
+  props: Object
+) {
   const { pipe } = renderToPipeableStream(
-    <Document path={req.path} context={hydrator} />,
+    <Document path={req.path} Component={Component} props={props} />,
     {
       bootstrapScripts: ["main.js"],
       onShellReady() {

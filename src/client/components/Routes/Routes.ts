@@ -1,7 +1,8 @@
 import { Route } from "../../../lib/router/router.types";
 import Home from "../../pages";
+import PostsPage from "../../pages/posts";
+import UsersPage from "../../pages/users";
 import Counter from "../Counter/Counter";
-import Post from "../Post/Post";
 
 const routes: Array<Route> = [
   {
@@ -10,8 +11,12 @@ const routes: Array<Route> = [
     Component: Home,
   },
   {
-    path: "/post",
-    Component: Post,
+    path: "/users",
+    Component: UsersPage,
+  },
+  {
+    path: "/posts",
+    Component: PostsPage,
   },
   {
     path: "/counter",
@@ -20,3 +25,10 @@ const routes: Array<Route> = [
 ];
 
 export default routes;
+
+export function getMatchedComponent() {
+  if (window) {
+    const pathName = window.location.pathname;
+    return routes.find((route) => pathName === route.path);
+  }
+}

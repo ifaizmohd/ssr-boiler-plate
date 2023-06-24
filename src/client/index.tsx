@@ -1,16 +1,18 @@
 import * as React from "react";
 import { hydrateRoot } from "react-dom/client";
-import { matchRoutes } from "../lib/router";
-import { getCurrentPath } from "../lib/router/router";
 import App from "./App";
-import BrowserRouter from "./components/Router/BrowserRouter";
-import routes from "./components/Routes/Routes";
-import Document from "./Document";
 
-const Component = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+declare global {
+  interface Window {
+    INITIAL_PROPS?: any;
+  }
+}
+
+let INITIAL_PROPS = {};
+if (window) {
+  INITIAL_PROPS = window.INITIAL_PROPS;
+}
+
+const Component = <App props={INITIAL_PROPS} />;
 
 const root = hydrateRoot(document.getElementById("root"), Component);

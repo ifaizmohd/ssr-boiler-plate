@@ -1,4 +1,3 @@
-import { isBrowser } from "../core/browser";
 import { Route } from "./router.types";
 
 export function matchedRoute(routes: Array<Route>, pathname: string) {
@@ -20,14 +19,4 @@ export function renderRoutes(routes: Array<Route>, pathname: string) {
     throw Error("Invalid Path");
   }
   return matchedRoute(routes, pathname);
-}
-
-export function getCurrentPath(pathname?: string) {
-  if (isBrowser()) {
-    const host = window?.location.host;
-    const href = window?.location.href;
-    const path = href.includes(host) && href.split(host);
-    return path[path.length - 1];
-  }
-  return pathname;
 }

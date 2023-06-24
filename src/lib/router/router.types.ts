@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 
 export interface RouterTypes {
   routes: Array<Object>;
@@ -7,11 +7,13 @@ export interface RouterTypes {
 
 export interface Route {
   path: string;
-  Component: FC;
+  Component: FC<any>;
   exact?: boolean;
 }
 
 export interface Page {
   getServerSideProps?: Function;
   default: FC;
+  getInitialProps?: Function;
+  getStaticProps?: Function;
 }

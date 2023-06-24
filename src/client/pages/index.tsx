@@ -1,6 +1,7 @@
 import * as React from "react";
+import { HomePageProps } from "./types";
 
-const Home: React.FC = () => {
+const Home: React.FC<HomePageProps> = ({ props }) => {
   return (
     <div>
       <h3>Hi I'm Home component</h3>

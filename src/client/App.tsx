@@ -1,16 +1,10 @@
 import React, { FC } from "react";
-import { getCurrentPath } from "../lib/router/router";
-import Router from "./components/Router/Router";
 import { AppProps } from "./types/App.types";
+import { getMatchedComponent } from "./components/Routes/Routes";
 
-const App: FC<AppProps> = () => {
-  // const pathname = getCurrentPath();
-  return (
-    <div>
-      <h2>Hi I'm App component</h2>
-      {/* <Router path={pathname} /> */}
-    </div>
-  );
+const App: FC<AppProps> = ({ props }) => {
+  const { Component } = getMatchedComponent();
+  return <Component props={props} />;
 };
 
 export default App;

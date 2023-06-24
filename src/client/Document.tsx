@@ -1,32 +1,33 @@
 import React, { FC } from "react";
-import { matchRoutes } from "../lib/router";
-import { getCurrentPath } from "../lib/router/router";
-import App from "./App";
-import StaticRouter from "./components/Router/StaticRouter";
-import routes from "./components/Routes/Routes";
+import serializeJavascript from "serialize-javascript";
 import { DocumentProps } from "./types/Document.types";
+import Navigation from "./components/Navigation/Navigation";
 
-declare global {
-  interface Window {
-    Hydrate?: any;
-  }
-}
-
-const Document: FC<DocumentProps> = ({ path, context }) => {
-  const script = <script>{`var hydrate = ${JSON.stringify(context)}`}</script>;
+const Document: FC<DocumentProps> = ({ path, Component, props }) => {
   return (
     <html>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
+        <Navigation />
         <div id="root">
-          <StaticRouter path={path} context={context}>
-            <App />
-          </StaticRouter>
+          <Component props={props} />
         </div>
-        {script}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(window) {
+              window.INITIAL_PROPS = ${serializeJavascript(props)}
+            }`,
+          }}
+        />
       </body>
     </html>
   );

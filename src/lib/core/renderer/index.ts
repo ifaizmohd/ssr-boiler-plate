@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
-import { renderToNodeStram } from "./renderer";
+import { renderToNodeStream } from "./renderer";
+import { Page } from "../../router/router.types";
+import { FC } from "react";
 
 export default function renderNodeStream(
   req: Request,
   res: Response,
-  hydrator: any
+  Component: FC<any>,
+  props: Object
 ) {
   if (!req || !res || !req.path) {
-    throw new Error('Invalid Path');
+    throw new Error("Invalid Path");
   }
-  renderToNodeStram(req, res, hydrator);
+  renderToNodeStream(req, res, Component, props);
 }

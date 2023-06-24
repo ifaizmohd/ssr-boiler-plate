@@ -9,20 +9,11 @@ const hydrator = new Hydrator();
 
 // Setting up app to use public as static dir.
 app.use(express.static("public"));
-//
+// Handling requests.
 app.get("*", async (req: Request, res: Response) => {
   console.log("path", req.path);
-  if (req.path === "/favicon.ico") {
-    res.status(404);
-  }
-  // TODO: Need to call server side props.
-  const pageToRender = await getPageToRender(req.path);
-  console.log("page to render - ", pageToRender);
-  const context = {
-    component: pageToRender,
-  };
-  hydrator.setRouteContext(context);
-  renderNodeStream(req, res, hydrator);
+  const { Component, props } = await getPageToRender(req.path);
+  renderNodeStream(req, res, Component, props);
 });
 
 const port: number = 8080;
