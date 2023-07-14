@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { renderToNodeStream } from "./renderer";
-import { Page } from "../../router/router.types";
 import { FC } from "react";
 
 export default function renderNodeStream(

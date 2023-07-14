@@ -13,7 +13,7 @@ export interface Route {
 
 export interface Page {
   getServerSideProps?: Function;
-  default: FC;
+  default: FC<any>;
   getInitialProps?: Function;
   getStaticProps?: Function;
 }

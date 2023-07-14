@@ -1,11 +1,9 @@
 import "@babel/polyfill";
 import express, { Express, Request, Response } from "express";
-import Hydrator from "./client/lib/hydrator";
 import renderNodeStream from "./lib/core/renderer";
 import { getPageToRender } from "./lib/router/createPage";
 
 const app: Express = express();
-const hydrator = new Hydrator();
 
 // Setting up app to use public as static dir.
 app.use(express.static("public"));
